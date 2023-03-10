@@ -17,21 +17,24 @@
 package org.laokou.test.jdk;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.Map;
 
 /**
  * @author laokou
  */
-public class Jdk8Test10 {
+public class Jdk8Test16 {
     public static void main(String[] args) {
-        Consumer<String> p1 = s -> System.out.println(s.toLowerCase());
-        Consumer<String> p2 = s -> System.out.println(s.toUpperCase());
+        List<String> strings = Arrays.asList("222", "333", "444");
+        for (String string : strings) {
+            System.out.println(string);
+        }
+        strings.forEach(item -> System.out.println(item));
+        strings.forEach(System.out::println);
 
-        Consumer<String> stringConsumer = p1.andThen(p2);
-
-        List<String> integers = Arrays.asList("ADD");
-        integers.forEach(stringConsumer);
-
+        Map<String,String> data = new HashMap<>(1);
+        data.put("aa","123");
+        data.forEach((k,v) -> System.out.println(k + "->" + v));
     }
 }

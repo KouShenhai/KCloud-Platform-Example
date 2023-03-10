@@ -16,22 +16,20 @@
 
 package org.laokou.test.jdk;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
 
 /**
  * @author laokou
  */
-public class Jdk8Test10 {
+public class Jdk8Test11 {
     public static void main(String[] args) {
-        Consumer<String> p1 = s -> System.out.println(s.toLowerCase());
-        Consumer<String> p2 = s -> System.out.println(s.toUpperCase());
-
-        Consumer<String> stringConsumer = p1.andThen(p2);
-
-        List<String> integers = Arrays.asList("ADD");
-        integers.forEach(stringConsumer);
-
+        Function<String,Integer> worldLen = s -> s.length();
+        Function<Integer,Boolean> ll = len -> len >= 4;
+        Function<String, Boolean> stringBooleanFunction = worldLen.andThen(ll);
+        Map<String,Boolean> d = new HashMap<>(2);
+        d.computeIfAbsent("233",stringBooleanFunction);
+        System.out.println(d);
     }
 }

@@ -17,21 +17,20 @@
 package org.laokou.test.jdk;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.function.Consumer;
 
 /**
  * @author laokou
  */
-public class Jdk8Test10 {
+public class Jdk8Test13 {
     public static void main(String[] args) {
-        Consumer<String> p1 = s -> System.out.println(s.toLowerCase());
-        Consumer<String> p2 = s -> System.out.println(s.toUpperCase());
-
-        Consumer<String> stringConsumer = p1.andThen(p2);
-
-        List<String> integers = Arrays.asList("ADD");
-        integers.forEach(stringConsumer);
-
+        List<Integer> integers = Arrays.asList(21, 2, 3);
+        Collections.sort(integers, Comparator.comparingInt(a -> a));
+        System.out.println(integers);
+        List<String> strings = Arrays.asList("ee", "bb", "cc");
+        Collections.sort(strings, (o1, o2) -> o2.charAt(0) - o1.charAt(0));
+        System.out.println(strings);
     }
 }

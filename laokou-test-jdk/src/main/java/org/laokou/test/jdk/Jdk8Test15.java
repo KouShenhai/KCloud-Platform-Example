@@ -16,22 +16,22 @@
 
 package org.laokou.test.jdk;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Consumer;
-
 /**
  * @author laokou
  */
-public class Jdk8Test10 {
+public class Jdk8Test15 {
     public static void main(String[] args) {
-        Consumer<String> p1 = s -> System.out.println(s.toLowerCase());
-        Consumer<String> p2 = s -> System.out.println(s.toUpperCase());
-
-        Consumer<String> stringConsumer = p1.andThen(p2);
-
-        List<String> integers = Arrays.asList("ADD");
-        integers.forEach(stringConsumer);
-
+       Fu f = (i) -> System.out.println(i);
+       f.f(1);
+       Dd dd = i -> i;
+        System.out.println(dd.a(111));
+    }
+    @FunctionalInterface
+    interface Fu {
+        void f(int i);
+    }
+    @FunctionalInterface
+    interface Dd {
+        int a(int i);
     }
 }

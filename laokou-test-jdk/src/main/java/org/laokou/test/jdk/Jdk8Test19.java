@@ -18,20 +18,13 @@ package org.laokou.test.jdk;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Consumer;
 
 /**
  * @author laokou
  */
-public class Jdk8Test10 {
+public class Jdk8Test19 {
     public static void main(String[] args) {
-        Consumer<String> p1 = s -> System.out.println(s.toLowerCase());
-        Consumer<String> p2 = s -> System.out.println(s.toUpperCase());
-
-        Consumer<String> stringConsumer = p1.andThen(p2);
-
-        List<String> integers = Arrays.asList("ADD");
-        integers.forEach(stringConsumer);
-
+        List<Integer> integers = Arrays.asList(1, 2, 33, 222);
+        integers.parallelStream().forEach(n -> System.out.println(Thread.currentThread().getName() + "--->" + n));
     }
 }

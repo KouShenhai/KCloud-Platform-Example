@@ -16,22 +16,41 @@
 
 package org.laokou.test.jdk;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Consumer;
-
 /**
  * @author laokou
  */
-public class Jdk8Test10 {
+public class Jdk8Test14 {
     public static void main(String[] args) {
-        Consumer<String> p1 = s -> System.out.println(s.toLowerCase());
-        Consumer<String> p2 = s -> System.out.println(s.toUpperCase());
+        A aa = Jdk8Test14::t;
+        aa.te();
+        Te te = new Te();
+        A zz = te::s;
+        zz.te();
+        Tee tee = new Tee();
+        A zzz = tee::x;
+        zzz.te();
+        A zzzz = Tee::new;
+    }
+    public static void t() {
+        System.out.println(3331);
+    }
+    static class Te {
+        public void s() {
+            System.out.println(33);
+        }
+    }
+    static class Tee extends Te {
+        public Tee() {
+            System.out.println(00);
+            System.out.println(11133);
+        }
 
-        Consumer<String> stringConsumer = p1.andThen(p2);
-
-        List<String> integers = Arrays.asList("ADD");
-        integers.forEach(stringConsumer);
-
+        A x() {
+            return null;
+        }
+    }
+    @FunctionalInterface
+    public interface A{
+        void te();
     }
 }
