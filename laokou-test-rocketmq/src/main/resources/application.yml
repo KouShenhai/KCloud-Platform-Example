@@ -1,0 +1,12 @@
+server:
+  port: 9001
+
+rocketmq:
+  name-server: 192.168.62.144:9876
+  # 生产者
+  producer:
+    group: laokou-producer-group
+    # 超时时限5s
+    send-message-timeout: 5000
+    # 重试次数3次
+    retry-times-when-send-failed: 3
