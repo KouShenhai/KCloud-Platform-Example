@@ -14,18 +14,25 @@
  * limitations under the License.
  */
 
-package org.laokou.test.jdk.jdk9;
+package org.laokou.test.jdk.jdk10;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
 
 /**
  * @author laokou
  */
-public class Jdk9Test6 {
-    public static void main(String[] args) {
-        // 获取当前正在运行的JVM进程
-        ProcessHandle current = ProcessHandle.current();
-        // 输出进程的id
-        System.out.println(current.pid());
-        // 输出进程的信息
-        System.out.println(current.info());
+public class Jdk10Test1 {
+    public static void main(String[] args) throws MalformedURLException {
+        var id = 1;
+        System.out.println(id);
+        var p = new URL("https://www.baidu.com");
+        System.out.println(p);
+        var s = List.of(1);
+        System.out.println(s);
+        for (var o : s) {
+            System.out.println(o);
+        }
     }
 }

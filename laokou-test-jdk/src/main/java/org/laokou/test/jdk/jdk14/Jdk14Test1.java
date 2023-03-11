@@ -14,18 +14,26 @@
  * limitations under the License.
  */
 
-package org.laokou.test.jdk.jdk9;
+package org.laokou.test.jdk.jdk14;
 
 /**
  * @author laokou
  */
-public class Jdk9Test6 {
+public class Jdk14Test1 {
     public static void main(String[] args) {
-        // 获取当前正在运行的JVM进程
-        ProcessHandle current = ProcessHandle.current();
-        // 输出进程的id
-        System.out.println(current.pid());
-        // 输出进程的信息
-        System.out.println(current.info());
+        // JVM添加参数-XX:+ShowCodeDetailsInExceptionMessages，可获取详细异常信息，快速定位问题
+        String body = "D";
+        String str = switch (body) {
+            case "M" -> "33";
+            case "D" -> "3333";
+            default -> {
+                if (!body.isEmpty()) {
+                    yield "3333";
+                } else {
+                    yield "33";
+                }
+            }
+        };
+        System.out.println(str);
     }
 }

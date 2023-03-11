@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package org.laokou.test.jdk.jdk9;
+package org.laokou.test.jdk.jdk12_jdk13;
+
+import java.text.NumberFormat;
+import java.util.Locale;
 
 /**
  * @author laokou
  */
-public class Jdk9Test6 {
+public class Jdk12_13Test5 {
     public static void main(String[] args) {
-        // 获取当前正在运行的JVM进程
-        ProcessHandle current = ProcessHandle.current();
-        // 输出进程的id
-        System.out.println(current.pid());
-        // 输出进程的信息
-        System.out.println(current.info());
+        NumberFormat compactNumberInstance = NumberFormat.getCompactNumberInstance(Locale.US, NumberFormat.Style.SHORT);
+        String format = compactNumberInstance.format(10000);
+        System.out.println(format);
     }
 }

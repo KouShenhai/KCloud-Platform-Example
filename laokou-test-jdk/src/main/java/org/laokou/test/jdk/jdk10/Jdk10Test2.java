@@ -14,18 +14,19 @@
  * limitations under the License.
  */
 
-package org.laokou.test.jdk.jdk9;
+package org.laokou.test.jdk.jdk10;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author laokou
  */
-public class Jdk9Test6 {
+public class Jdk10Test2 {
     public static void main(String[] args) {
-        // 获取当前正在运行的JVM进程
-        ProcessHandle current = ProcessHandle.current();
-        // 输出进程的id
-        System.out.println(current.pid());
-        // 输出进程的信息
-        System.out.println(current.info());
+        List<String> strings = Arrays.asList("33", "2");
+        List<String> collect = strings.stream().collect(Collectors.toUnmodifiableList());
+        System.out.println(collect);
     }
 }

@@ -14,18 +14,31 @@
  * limitations under the License.
  */
 
-package org.laokou.test.jdk.jdk9;
+package org.laokou.test.jdk.jdk15;
 
 /**
  * @author laokou
  */
-public class Jdk9Test6 {
-    public static void main(String[] args) {
-        // 获取当前正在运行的JVM进程
-        ProcessHandle current = ProcessHandle.current();
-        // 输出进程的id
-        System.out.println(current.pid());
-        // 输出进程的信息
-        System.out.println(current.info());
-    }
+public class Jdk15Test2 {
+
+    /**
+     * 密封类，只允许被P,X继承
+     */
+  static abstract sealed class P permits T,X {
+
+  }
+
+  static final class T extends P {
+
+  }
+
+  static non-sealed class X extends P {
+
+  }
+
+  //   Q不能继承P
+//  static final class Q extends P {
+//
+//  }
+
 }

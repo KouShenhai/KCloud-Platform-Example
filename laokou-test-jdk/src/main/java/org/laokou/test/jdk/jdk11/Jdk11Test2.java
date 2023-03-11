@@ -14,18 +14,22 @@
  * limitations under the License.
  */
 
-package org.laokou.test.jdk.jdk9;
+package org.laokou.test.jdk.jdk11;
+
+import java.util.stream.Collectors;
 
 /**
  * @author laokou
  */
-public class Jdk9Test6 {
+public class Jdk11Test2 {
     public static void main(String[] args) {
-        // 获取当前正在运行的JVM进程
-        ProcessHandle current = ProcessHandle.current();
-        // 输出进程的id
-        System.out.println(current.pid());
-        // 输出进程的信息
-        System.out.println(current.info());
+        boolean blank = "ii".isBlank();
+        System.out.println(blank);
+        System.out.println(" Kas ".stripLeading());
+        System.out.println(" ddd ".stripTrailing());
+        // 重复3遍
+        System.out.println("333".repeat(3));
+        System.out.println("A\n3\nc".lines().collect(Collectors.toList()));
+        System.out.println("A\nB\nC".lines().count());
     }
 }

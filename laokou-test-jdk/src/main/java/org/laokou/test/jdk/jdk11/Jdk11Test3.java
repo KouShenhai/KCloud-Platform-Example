@@ -14,18 +14,19 @@
  * limitations under the License.
  */
 
-package org.laokou.test.jdk.jdk9;
+package org.laokou.test.jdk.jdk11;
+
+import org.laokou.test.jdk.jdk8.funcation.Consumer;
+
+import java.util.Optional;
 
 /**
  * @author laokou
  */
-public class Jdk9Test6 {
+public class Jdk11Test3 {
     public static void main(String[] args) {
-        // 获取当前正在运行的JVM进程
-        ProcessHandle current = ProcessHandle.current();
-        // 输出进程的id
-        System.out.println(current.pid());
-        // 输出进程的信息
-        System.out.println(current.info());
+        System.out.println(Optional.empty().isEmpty());
+       Consumer<String> consumer = (var i) -> System.out.println(i);
+        consumer.accept("222");
     }
 }

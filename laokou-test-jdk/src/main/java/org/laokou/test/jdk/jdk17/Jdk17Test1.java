@@ -14,18 +14,19 @@
  * limitations under the License.
  */
 
-package org.laokou.test.jdk.jdk9;
+package org.laokou.test.jdk.jdk17;
+
+import java.util.random.RandomGenerator;
+import java.util.random.RandomGeneratorFactory;
 
 /**
  * @author laokou
  */
-public class Jdk9Test6 {
+public class Jdk17Test1 {
     public static void main(String[] args) {
-        // 获取当前正在运行的JVM进程
-        ProcessHandle current = ProcessHandle.current();
-        // 输出进程的id
-        System.out.println(current.pid());
-        // 输出进程的信息
-        System.out.println(current.info());
+        // PRNG伪随机数生成
+        RandomGeneratorFactory<RandomGenerator> randomGeneratorRandomGeneratorFactory = RandomGeneratorFactory.of("L128X256MixRandom");
+        RandomGenerator randomGenerator = randomGeneratorRandomGeneratorFactory.create(System.currentTimeMillis());
+        System.out.println(randomGenerator.nextInt(10));
     }
 }

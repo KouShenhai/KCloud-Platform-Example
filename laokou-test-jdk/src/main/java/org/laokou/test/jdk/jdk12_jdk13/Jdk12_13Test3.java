@@ -14,18 +14,22 @@
  * limitations under the License.
  */
 
-package org.laokou.test.jdk.jdk9;
+package org.laokou.test.jdk.jdk12_jdk13;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 /**
  * @author laokou
  */
-public class Jdk9Test6 {
-    public static void main(String[] args) {
-        // 获取当前正在运行的JVM进程
-        ProcessHandle current = ProcessHandle.current();
-        // 输出进程的id
-        System.out.println(current.pid());
-        // 输出进程的信息
-        System.out.println(current.info());
+public class Jdk12_13Test3 {
+    public static void main(String[] args) throws IOException {
+        Path tempFile = Files.createTempFile("kcloud_platform_alibaba", ".sql");
+        Path tempFile1 = Files.createTempFile("kcloud_platform_alibaba1", ".sql");
+        Files.writeString(tempFile1,"333");
+        Files.writeString(tempFile,"333");
+        long mismatch = Files.mismatch(tempFile1, tempFile);
+        System.out.println(mismatch);
     }
 }

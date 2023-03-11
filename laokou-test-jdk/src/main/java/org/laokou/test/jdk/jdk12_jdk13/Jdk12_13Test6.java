@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package org.laokou.test.jdk.jdk9;
+package org.laokou.test.jdk.jdk12_jdk13;
 
 /**
  * @author laokou
  */
-public class Jdk9Test6 {
+public class Jdk12_13Test6 {
     public static void main(String[] args) {
-        // 获取当前正在运行的JVM进程
-        ProcessHandle current = ProcessHandle.current();
-        // 输出进程的id
-        System.out.println(current.pid());
-        // 输出进程的信息
-        System.out.println(current.info());
+        Integer name = 1;
+        String str = switch (name) {
+            case 1 : yield "333";
+            default: yield "222";
+        };
+        System.out.println(str);
     }
 }
