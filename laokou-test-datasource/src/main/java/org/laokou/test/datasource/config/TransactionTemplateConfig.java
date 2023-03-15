@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.laokou.test.datasource;
+package org.laokou.test.datasource.config;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +28,7 @@ import org.springframework.transaction.support.TransactionTemplate;
  * @author laokou
  */
 @Configuration
-public class TemplateConfig {
+public class TransactionTemplateConfig {
     @Bean(name = "transactionTemplate")
     @ConditionalOnMissingBean(TransactionOperations.class)
     public TransactionTemplate transactionTemplate(PlatformTransactionManager transactionManager) {

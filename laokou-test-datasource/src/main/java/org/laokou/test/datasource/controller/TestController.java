@@ -16,6 +16,7 @@
 
 package org.laokou.test.datasource.controller;
 
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.google.common.collect.Lists;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -56,7 +57,7 @@ public class TestController {
 
     @SneakyThrows
     @GetMapping("/start")
-    public void start(){
+    public void start() {
         STOP.set(false);
         // 10w数据
         long size = 100000;
@@ -73,7 +74,7 @@ public class TestController {
         AtomicBoolean rollback = new AtomicBoolean(false);
         List<List<TestEntity>> partition = Lists.partition(longList, chunkSize);
         for (int i = 0; i < count; i++) {
-            log.info("批量次数：{}，当前线程：{}",i,Thread.currentThread().getName());
+            log.info("批量次数：{}，当前线程：{}", i, Thread.currentThread().getName());
             int finalI = i;
             TASK_THREAD_POOL_EXECUTOR.execute(() -> transactionalUtil.execute(callback -> {
                 try {
@@ -103,7 +104,13 @@ public class TestController {
         // 30秒后结束阻塞
         log.info("主线程阻塞中。。。");
         countDownLatch.await(30, TimeUnit.SECONDS);
-        log.info("导入成功。。。");
+        if (STOP.get()) {
+            // TODO 清空已经提交的数据
+            // 一定根据条件清理，切记不要把所有数据删了
+            // testService.remove(Wrappers.query());
+        } else {
+            log.info("导入成功。。。");
+        }
     }
 
     @GetMapping("/stop")
