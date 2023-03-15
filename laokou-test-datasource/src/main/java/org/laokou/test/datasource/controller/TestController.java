@@ -15,8 +15,6 @@
  */
 
 package org.laokou.test.datasource.controller;
-
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.google.common.collect.Lists;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
